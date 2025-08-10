@@ -1,0 +1,11 @@
+# Automation scripts in the project root
+!/build_iso.sh
+!/custom_releng.sh
+!/format_key.sh
+
+# Documentation
+!/README.md
+
+# The entire directory containing our customizations
+!/custom_files/
+!/custom_files/**

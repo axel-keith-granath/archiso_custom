@@ -1,0 +1,11 @@
+[Unit]
+Description=Mount External STORAGE Partition
+
+[Mount]
+What=/dev/disk/by-label/STORAGE
+Where=/mnt/storage
+Type=vfat
+Options=defaults,rw,umask=000
+
+[Install]
+WantedBy=multi-user.target
