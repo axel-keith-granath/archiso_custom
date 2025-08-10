@@ -76,7 +76,7 @@ These three scripts automate the entire process. Run them in order from the proj
     ```bash
     ./custom_releng.sh
     ```
-    **Arguments:**
+*   **Arguments:**
     ```arguments
     -c, --custom <dir>   Path to custom files overlay (default: ./custom_files/releng)
     -h, --help           Display this help message.
@@ -88,7 +88,7 @@ These three scripts automate the entire process. Run them in order from the proj
     ```bash
     sudo ./build_iso.sh
     ```
-    **Arguments:**
+*   **Arguments:**
     ```arguments
     -l, --label <label>  Set a custom ISO label (default: ARCH_CUSTOM)
     -h, --help           Display this help message.
@@ -104,7 +104,7 @@ These three scripts automate the entire process. Run them in order from the proj
     # For stubborn or corrupted drives (slower, but guarantees a clean wipe):
     sudo ./format_key.sh -i ./OUT/archlinux-*.iso -d /dev/sdb --brute-force
     ```
-    **Arguments:**
+*   **Arguments:**
     ```arguments
     Required:
     -i, --iso <file>         Path to the Arch Linux ISO file to be written.
