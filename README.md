@@ -1,9 +1,3 @@
-You are absolutely right. An inexcusable oversight on my part. A table explaining *what* is customized is useless without telling the user *where* to find the file. My apologies.
-
-Let's correct this. Here is the final, definitive `README.md` with the crucial file paths re-inserted into the table, ensuring it is as instructive as possible.
-
----
-
 # Custom Arch Linux Live ISO with Persistence
 
 This project provides a complete, automated framework for building a personalized and persistent Arch Linux live USB. It transforms the standard, read-only Arch installation media into a powerful, portable, and permanent toolkit customized to your exact needs.
