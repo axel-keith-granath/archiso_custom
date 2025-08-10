@@ -1,13 +1,21 @@
-# Custom Arch Linux Live ISO with Persistence
+# Custom Arch Linux Live ISO with Persistence | ARCHISO
 
 This project provides a complete, automated framework for building a personalized and persistent Arch Linux live USB. It transforms the standard, read-only Arch installation media into a powerful, portable, and permanent toolkit customized to your exact needs.
+
+## Index
+
+- [1. Project Overview & Features](#1-project-overview--features)
+- [2. How to Customize Your ISO](#2-how-to-customize-your-iso)
+- [3. Getting Started](#3-getting-started)
+- [4. The Automated Workflow](#4-the-automated-workflow)
+- [5. Manual Procedure](#5-manual-procedure)
 
 ## 1. Project Overview & Features
 
 This framework builds a bootable USB drive with a sophisticated set of features designed for flexibility and power. At a glance, the final key provides:
 
 *   **True System Persistence:** All changes you make—shell history, system settings, newly installed packages, and created files—are saved and persist across reboots.
-*   **Intelligent 3-Partition Layout:**
+*   **3-Partition Layout:**
     *   **`ARCHISO`:** A dynamically-sized partition for the OS, ensuring no wasted space.
     *   **`persistence`:** A large partition using all remaining space to save your data.
     *   **`STORAGE`:** A cross-platform `vfat` partition for easy file sharing, automatically mounted at `/mnt/storage`.
@@ -57,7 +65,7 @@ sudo pacman -S --needed archiso git rsync gptfdisk
 
 After cloning this repository, simply begin editing the files within the `custom_files/` directory to match your preferences. `git` manages this directory's contents, and the build scripts handle its integration.
 
-## 4. The Automated Workflow (Recommended)
+## 4. The Automated Workflow
 
 These three scripts automate the entire process. Run them in order from the project's root directory.
 
@@ -68,7 +76,11 @@ These three scripts automate the entire process. Run them in order from the proj
     ```bash
     ./custom_releng.sh
     ```
-
+    **Arguments:**
+    ```arguments
+    -c, --custom <dir>   Path to custom files overlay (default: ./custom_files/releng)
+    -h, --help           Display this help message.
+    ```
 ### 4.2. Script 2: `sudo ./build_iso.sh`
 
 *   **Purpose:** Builds the `.iso` file from the prepared `releng` directory.
@@ -76,7 +88,11 @@ These three scripts automate the entire process. Run them in order from the proj
     ```bash
     sudo ./build_iso.sh
     ```
-
+    **Arguments:**
+    ```arguments
+    -l, --label <label>  Set a custom ISO label (default: ARCH_CUSTOM)
+    -h, --help           Display this help message.
+    ```
 ### 4.3. Script 3: `sudo ./format_key.sh`
 
 *   **Purpose:** Wipes a target USB drive, creates the dynamic 3-partition layout, and writes the ISO.
@@ -88,8 +104,18 @@ These three scripts automate the entire process. Run them in order from the proj
     # For stubborn or corrupted drives (slower, but guarantees a clean wipe):
     sudo ./format_key.sh -i ./OUT/archlinux-*.iso -d /dev/sdb --brute-force
     ```
-
-## 5. Manual Procedure (For Advanced Users)
+    **Arguments:**
+    ```arguments
+    Required:
+    -i, --iso <file>         Path to the Arch Linux ISO file to be written.
+    -d, --device <path>      Path to the target block device (e.g., /dev/sdb).
+    Optional:
+    -s, --storage-size <size>  Size for the STORAGE partition (default: 512M).
+    -b, --brute-force        Perform a full brute-force wipe of the entire device (writes zeros).
+    -y, --no-confirm         Bypass the interactive confirmation prompt.
+    -h, --help                 Display this help message.
+    ```
+## 5. Manual Procedure
 
 This is the underlying command sequence if you prefer to run the steps manually.
 
